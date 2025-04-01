@@ -1,0 +1,57 @@
+ <section class="list-section">
+    <div class="list-header">
+      <h2>Favorite Movies</h2>
+      <button class="delete-selected-btn" type="button" {{on "click" @deleteSelected}}>
+        Delete Selected
+      </button>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th class="select-column">
+              <span class="sr-only">Select</span>
+            </th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Edit</th>
+            <th class="actions-column">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="movieList">
+          {{#each @filteredMovies as |movie|}}
+            <tr>
+              <td class="select-column">
+                <label class="checkbox-container">
+                  <input
+                    type="checkbox"
+                    value={{movie.id}}
+                    {{on "change" (fn @toggleSelect movie.id)}}
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td>{{movie.id}}</td>
+              <td>{{movie.title}}</td>
+              <td>{{movie.director}}</td>
+              <td>
+                <button class="edit-icon" type="button" {{on "click" (fn @editMovie movie.id)}}>✏️</button>
+              </td>
+              <td class="actions-column">
+                <button
+                  class="delete-btn" type="button" {{on "click" (fn @deleteMovie movie.id)}}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          {{else}}
+            <tr>
+              <td colspan="5" class="empty-state">No movies added yet</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </section>
