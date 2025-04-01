@@ -9,6 +9,9 @@ export default class MovieStoreService extends Service {
     { id: 1, title: 'Interstellar (2014)', director: 'Nolan' },
     { id: 2, title: 'Avengers (2012)', director: 'Joss Whedon' },
     { id: 3, title: 'Inception (2010)', director: 'Christopher Nolan' },
+    { id: 4, title: '', director: 'Christopher Nolan' },
+    { id: 5, title: 'Dune', director: '' },
+
   ];
 
   get movies() {
@@ -20,29 +23,26 @@ export default class MovieStoreService extends Service {
     let newId = this.movies.length
       ? this.movies[this.movies.length - 1].id + 1
       : 1;
-    
-    this.movies = [
-      ...this.movies,
-      { id: newId, title, director },
-    ];
-    
+
+    this.movies = [...this.movies, { id: newId, title, director }];
+
     console.log('Movie added:', { id: newId, title, director });
     console.log('Current movies:', this.movies);
-    this.flashMessages.success("New movie added Successfully!")
+    this.flashMessages.success('New movie added Successfully!');
     return true;
   }
 
   @action
   deleteMovie(id) {
     this.movies = this.movies.filter((movie) => movie.id !== id);
-    this.flashMessages.danger("Movie deleted Successfully!")
+    this.flashMessages.danger('Movie deleted Successfully!');
   }
 
   @action
   updateMovie(id, title, director) {
     this.movies = this.movies.map((movie) =>
-      movie.id === id ? { ...movie, title, director } : movie
+      movie.id === id ? { ...movie, title, director } : movie,
     );
-    this.flashMessages.info("Movie updated Successfully!")
+    this.flashMessages.info('Movie updated Successfully!');
   }
 }

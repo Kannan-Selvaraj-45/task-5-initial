@@ -6,7 +6,7 @@ import { inject as service } from '@ember/service';
 export default class AddMovieController extends Controller {
   @service router;
   @service movieStore;
-  
+  @service flashMessages;
   @tracked newTitle = '';
   @tracked newDirector = '';
 
@@ -22,16 +22,16 @@ export default class AddMovieController extends Controller {
 
   @action
   addMovie() {
-    if (this.newTitle.trim() && this.newDirector.trim()) {
+    if (this.newTitle.trim() || this.newDirector.trim()) {
       this.movieStore.addMovie(this.newTitle, this.newDirector);
-      
+
       this.newTitle = '';
       this.newDirector = '';
-      
+
       this.router.transitionTo('movies');
-    } else {
-      alert('Please enter both title and director');
-    }
+    } else{
+      this.flashMessages.warning("Data is Insufficient!")
+    } 
   }
 
   @action

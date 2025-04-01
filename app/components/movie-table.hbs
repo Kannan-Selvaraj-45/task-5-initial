@@ -1,24 +1,31 @@
- <section class="list-section">
-    <div class="list-header">
-      <h2>Favorite Movies</h2>
-      <button class="delete-selected-btn" type="button" {{on "click" @deleteSelected}}>
-        Delete Selected
-      </button>
-    </div>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th class="select-column">
-              <span class="sr-only">Select</span>
-            </th>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Director</th>
-            <th>Edit</th>
-            <th class="actions-column">Actions</th>
-          </tr>
-        </thead>
+<section class="list-section">
+  <div class="list-header">
+    <h2>Favorite Movies</h2>
+    <button
+      class="delete-selected-btn"
+      type="button"
+      {{on "click" @deleteSelected}}
+    >
+      Delete Selected
+    </button>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th class="select-column">
+            <span class="sr-only">Select</span>
+          </th>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Director</th>
+          <th>Edit</th>
+          <th class="actions-column">Actions</th>
+        </tr>
+      </thead>
+
+      {{#if (gt @filteredMovies.length 0)}}
+
         <tbody id="movieList">
           {{#each @filteredMovies as |movie|}}
             <tr>
@@ -33,25 +40,42 @@
                 </label>
               </td>
               <td>{{movie.id}}</td>
-              <td>{{movie.title}}</td>
+
+              {{#if (not-eq movie.title "")}}
+                <td>{{movie.title}}</td>
+              {{else}}
+                <td class="missing-data">No title found!</td>
+              {{/if}}
+
+              {{#if (not-eq movie.director "")}}
               <td>{{movie.director}}</td>
+              {{else}}
+                <td class="missing-data">Director name not found!</td>
+              {{/if}}
               <td>
-                <button class="edit-icon" type="button" {{on "click" (fn @editMovie movie.id)}}>✏️</button>
+                <button
+                  class="edit-icon"
+                  type="button"
+                  {{on "click" (fn @editMovie movie.id)}}
+                >✏️</button>
               </td>
               <td class="actions-column">
                 <button
-                  class="delete-btn" type="button" {{on "click" (fn @deleteMovie movie.id)}}
+                  class="delete-btn"
+                  type="button"
+                  {{on "click" (fn @deleteMovie movie.id)}}
                 >
                   Delete
                 </button>
               </td>
             </tr>
-          {{else}}
-            <tr>
-              <td colspan="5" class="empty-state">No movies added yet</td>
-            </tr>
           {{/each}}
         </tbody>
-      </table>
-    </div>
-  </section>
+      {{else}}
+        <tr>
+          <td colspan="5" class="empty-state">No movies added yet</td>
+        </tr>
+      {{/if}}
+    </table>
+  </div>
+</section>

@@ -17,13 +17,12 @@ body {
   margin: auto;
   padding: 24px;
 }
-.actions{
+.actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.add-movie-button{
-   
+.add-movie-button {
   width: 165px;
   height: 40px;
 }
@@ -36,7 +35,7 @@ body {
   color: transparent;
   letter-spacing: -0.5px;
 }
-.new-movie-head{
+.new-movie-head {
   font-size: 20px;
   font-weight: 700;
   text-align: center;
@@ -212,7 +211,11 @@ input[type="checkbox"]:checked::after {
 .edit-icon {
   background-color: transparent;
 }
-/* Flash Messages Styling */
+
+.missing-data{
+  color: red;
+  font-style: italic;
+}
 .flash-messages-container {
   position: fixed;
   top: 20px;
@@ -280,4 +283,3 @@ input[type="checkbox"]:checked::after {
     opacity: 1;
   }
 }
-

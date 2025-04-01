@@ -5,7 +5,7 @@
     {{#each this.flashMessages.queue as |flash|}}
       <div class="flash-message {{flash.type}}">
         <p>{{flash.message}}</p>
-        <button class="flash-close-button" {{on "click" (fn this.removeFlashMessage flash)}}>×</button>
+        <button class="flash-close-button" type="button" {{on "click" (fn this.removeFlashMessage flash)}}>×</button>
       </div>
     {{/each}}
   </div>

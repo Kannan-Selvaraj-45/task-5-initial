@@ -18,8 +18,10 @@ export default class MoviesController extends Controller {
     if (!this.searched.trim()) {
       return this.movieStore.movies;
     }
-    return this.movieStore.movies.filter((movie) =>
-      movie.title.toLowerCase().includes(this.searched.toLowerCase())||movie.director.toLowerCase().includes(this.searched.toLowerCase()),
+    return this.movieStore.movies.filter(
+      (movie) =>
+        movie.title.toLowerCase().includes(this.searched.toLowerCase()) ||
+        movie.director.toLowerCase().includes(this.searched.toLowerCase()),
     );
   }
 
@@ -45,18 +47,18 @@ export default class MoviesController extends Controller {
   @action
   deleteSelected() {
     if (this.movieStore.movies.length === 0) {
-      this.flashMessages.warning("No movies available to delete!")
+      this.flashMessages.warning('No movies available to delete!');
       return;
     }
     if (this.selectedMovies.length === 0) {
-      this.flashMessages.warning("Select movies to delete!")
+      this.flashMessages.warning('Select movies to delete!');
       return;
     }
-    
-    this.selectedMovies.forEach(id => {
+
+    this.selectedMovies.forEach((id) => {
       this.movieStore.deleteMovie(id);
     });
-    
+
     this.selectedMovies = [];
   }
 
