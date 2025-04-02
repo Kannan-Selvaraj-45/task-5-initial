@@ -1,0 +1,22 @@
+{{page-title "Edit Movie"}}
+<div class="container">
+  <h1 class="main-title">Edit Movie</h1>
+  
+  <div class="form-flex">
+    <input
+      type="text"
+      placeholder="Movie title"
+      value={{this.title}}
+      {{on "input" this.updateTitle}}
+    />
+    <input
+      type="text"
+      placeholder="Director name"
+      value={{this.director}}
+      {{on "input" this.updateDirector}}
+    />
+    <button type="button" {{on "click" this.saveChanges}}>Save Changes</button>
+    <button type="button" {{on "click" this.cancel}}>Cancel</button>
+  </div>
+</div>
+{{outlet}}

@@ -17,15 +17,18 @@ body {
   margin: auto;
   padding: 24px;
 }
+
 .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .add-movie-button {
   width: 165px;
   height: 40px;
 }
+
 .main-title {
   font-size: 40px;
   font-weight: 700;
@@ -35,6 +38,7 @@ body {
   color: transparent;
   letter-spacing: -0.5px;
 }
+
 .new-movie-head {
   font-size: 20px;
   font-weight: 700;
@@ -44,6 +48,7 @@ body {
   color: transparent;
   letter-spacing: -0.5px;
 }
+
 h2 {
   font-size: 24px;
   font-weight: 600;
@@ -212,10 +217,11 @@ input[type="checkbox"]:checked::after {
   background-color: transparent;
 }
 
-.missing-data{
+.missing-data {
   color: red;
   font-style: italic;
 }
+
 .flash-messages-container {
   position: fixed;
   top: 20px;
@@ -228,7 +234,7 @@ input[type="checkbox"]:checked::after {
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
   animation: slideIn 0.3s ease-out;
   position: relative;
 }
@@ -278,6 +284,7 @@ input[type="checkbox"]:checked::after {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;

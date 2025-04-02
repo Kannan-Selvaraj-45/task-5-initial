@@ -11,12 +11,7 @@ export default class MovieStoreService extends Service {
     { id: 3, title: 'Inception (2010)', director: 'Christopher Nolan' },
     { id: 4, title: '', director: 'Christopher Nolan' },
     { id: 5, title: 'Dune', director: '' },
-
   ];
-
-  get movies() {
-    return this.movies;
-  }
 
   @action
   addMovie(title, director) {

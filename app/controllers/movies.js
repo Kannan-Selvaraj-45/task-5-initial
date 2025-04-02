@@ -10,10 +10,6 @@ export default class MoviesController extends Controller {
   @tracked searched = '';
   @tracked selectedMovies = [];
 
-  get movies() {
-    return this.movieStore.movies;
-  }
-
   get filteredMovies() {
     if (!this.searched.trim()) {
       return this.movieStore.movies;
@@ -61,20 +57,11 @@ export default class MoviesController extends Controller {
 
     this.selectedMovies = [];
   }
-
-  @action
-  editMovie(id) {
-    let findEditMovie = this.movieStore.movies.find((movie) => movie.id === id);
-    if (!findEditMovie) return;
-
-    let newTitle = prompt('Enter new title:', findEditMovie.title);
-    if (newTitle === null || newTitle.trim() === '') return;
-
-    let newDirector = prompt('Enter new director:', findEditMovie.director);
-    if (newDirector === null || newDirector.trim() === '') return;
-
-    this.movieStore.updateMovie(id, newTitle, newDirector);
-  }
+ 
+@action
+editMovie(id) {
+  this.router.transitionTo('edit-movie', id);
+}
 
   @action
   navigateToAddMovie() {

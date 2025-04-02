@@ -29,9 +29,9 @@ export default class AddMovieController extends Controller {
       this.newDirector = '';
 
       this.router.transitionTo('movies');
-    } else{
-      this.flashMessages.warning("Data is Insufficient!")
-    } 
+    } else {
+      this.flashMessages.warning('Data is Insufficient!');
+    }
   }
 
   @action
